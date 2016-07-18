@@ -7,5 +7,6 @@ scrapy crawl socareers  -o jobs.json
 
 
 Requirements:
-Python 2.7
-Scrapy 
+
+* Python 2.7
+* Scrapy 
