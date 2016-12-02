@@ -20,8 +20,8 @@ class SOSpider(scrapy.Spider):
             if id not in self.job_ids:
                 item = JobItem()
                 item['_id'] = id
-                item['title'] = ''.join(sel.xpath('div[@class="-title"]/h2/a/text()').extract())
-                item['salary'] = ''.join(sel.xpath('div[@class="-title"]/span/text()').extract()).strip()
+                item['title'] = ''.join(sel.xpath('div[@class="-title internal-apply-experiment"]/h2/a/text()').extract())
+                item['salary'] = ''.join(sel.xpath('div[@class="-title internal-apply-experiment"]/span/text()').extract()).strip()
                 item['company'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="employer"]/text()').extract()).strip()
                 item['location'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="location"]/text()').extract()).strip()
                 item['remote'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="remote"]/text()').extract()).strip()
