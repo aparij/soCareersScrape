@@ -15,17 +15,18 @@ class SOSpider(scrapy.Spider):
 
     def parse(self, response):
         for sel in response.xpath('//div[@data-jobid]'):
+            print(sel)
             id =''.join(sel.xpath('@data-jobid').extract())
             item = None
             if id not in self.job_ids:
                 item = JobItem()
                 item['_id'] = id
-                item['title'] = ''.join(sel.xpath('div[@class="-title"]/h2/a/text()').extract())
-                item['salary'] = ''.join(sel.xpath('div[@class="-title"]/span/text()').extract()).strip()
-                item['company'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="employer"]/text()').extract()).strip()
-                item['location'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="location"]/text()').extract()).strip()
-                item['remote'] = ''.join(sel.xpath('div[@class="-meta-wrapper"]/ul/li[@class="remote"]/text()').extract()).strip()
-                item['tags'] = sel.xpath('div[@class="tags"]/p/a/text()').extract()
+                item['title'] = ''.join(sel.xpath('div[@class="-job-info"]/div/h2/a/text()').extract())
+                item['salary'] = ''.join(sel.xpath('div[@class="-job-info"]/div/span/text()').extract()).strip()
+                item['company'] = ''.join(sel.xpath('div[@class="-job-info"]/div/ul/li[@class="employer"]/text()').extract()).strip()
+                item['location'] = ''.join(sel.xpath('div[@class="-job-info"]/div/ul/li[@class="location"]/text()').extract()).strip()
+                item['remote'] = ''.join(sel.xpath('div[@class="-job-info"]/div/ul/li[@class="remote"]/text()').extract()).strip()
+                item['tags'] = sel.xpath('div[@class="-job-info"]/div/p/a/text()').extract()
             else:
                 print "duplicate"
 
