@@ -1,8 +1,11 @@
 ##Scrape StackOverflow Careers website
 
+See the data on http://www.reallyhyped.com
+
+
 run with json file as output:
 
-scrapy crawl socareers  -o jobs.json
+`scrapy crawl socareers  -o jobs.json`
 
 
 
